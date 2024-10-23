@@ -1,7 +1,9 @@
+import { Button } from "./_components/ui/button"
+
 const Hpme = () => {
   return (
     <div>
-      <h1 className="mb-3 text-gray-50">Home Page</h1>
+      <Button>click</Button>
     </div>
   )
 }
