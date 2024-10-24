@@ -17,17 +17,21 @@ import ButtonOut from "./button-logout"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "./ui/dialog"
-import { Calendar1Icon, HomeIcon, LogInIcon, MenuIcon } from "lucide-react"
+import {
+  Calendar1Icon,
+  HomeIcon,
+  LogInIcon,
+  MenuIcon,
+} from "lucide-react"
+import { useSession } from "next-auth/react"
+import { Avatar, AvatarImage } from "./ui/avatar"
+import SignInDialog from "./sign-in-dialog"
+
 
 const SideBar = () => {
-  // const {data} = useSession();
-  const handleLoginWithGoogle = () => {}
-
+  const { data } = useSession()
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -41,42 +45,35 @@ const SideBar = () => {
           <SheetTitle className="text-left">Menu</SheetTitle>
         </SheetHeader>
 
-        {/*Div que contem o nosso operador ternaria que vai dizer caso nao tenhamos nenhum usuario exibe a mensagem Faça seu login*/}
         {/**************************** FAZER LOGIN COM GOOGLE ********************************/}
+        <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
+        {data?.user ? (
+          <div className="flex items-center gap-2">
+            <Avatar>
+              <AvatarImage src={data?.user?.image ?? ""} />
+            </Avatar>
 
-        <div className="flex items-center justify-between gap-2 border-b border-solid py-5">
-          <h2 className="text-md font-bold">Olá, faça seu login</h2>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="gap-2 text-lg font-bold" size="icon">
-                <LogInIcon />
-              </Button>
-            </DialogTrigger>
-
-            <DialogContent className="w-[90%] rounded-xl">
-              <DialogHeader>
-                <DialogTitle>Faça seu login na plataforma</DialogTitle>
-                <DialogDescription>
-                  Conecte-se usando sua conta do google
-                </DialogDescription>
-              </DialogHeader>
-
-              <Button
-                variant="outline"
-                className="gap-2 text-lg font-bold"
-                onClick={handleLoginWithGoogle}
-              >
-                <Image
-                  src="/google.svg"
-                  width={18}
-                  height={18}
-                  alt="Google icon "
-                />
-                Google
-              </Button>
-            </DialogContent>
-          </Dialog>
-        </div>
+            <div>
+              <p className="font-bold">{data.user.name}</p>
+              <p className="text-xs">{data.user.email}</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <h2 className="font-bold">Olá, faça seu login!</h2>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="icon">
+                  <LogInIcon />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="w-[90%]">
+                <SignInDialog />
+              </DialogContent>
+            </Dialog>
+          </>
+        )}
+      </div>
 
         {/**************************** SIDE BAR TEXTO INICIO********************************/}
         <div className="flex flex-col gap-2 border-b border-solid py-5">
@@ -98,7 +95,7 @@ const SideBar = () => {
           </Button>
         </div>
 
-         {/**************************** ICON NO SIDE BAR ********************************/}
+        {/**************************** ICON NO SIDE BAR ********************************/}
         {/*Div que guarda os nosso itens de busca rapida com os respectivos icon*/}
         <div className="mb-4 flex flex-col items-start gap-2 border-b border-solid py-5">
           {quickSearchOptions.map((filter) => (

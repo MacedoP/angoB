@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./_components/footer";
 import { Toaster } from "sonner";
+import AuthProvider from "./_providers/auth";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,12 +29,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <Toaster/>
-        <Footer/>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <AuthProvider>
+          <div className="flex h-full flex-col">
+            <div className="flex-1">{children}</div>
+            <Footer/>
+          </div>
+        </AuthProvider>  
+          <Toaster/>
       </body>
     </html>
   );
