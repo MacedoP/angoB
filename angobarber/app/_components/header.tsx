@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
+import SideBar from "./side-bar";
 
 const Header = () => {
   return (
@@ -19,10 +20,11 @@ const Header = () => {
           </h1>
         </div>
 
-        {/***************** BUTTON MENU SIDE BAR OPEN****************/}
-        <Button size="icon" variant="outline">
+        {/***************** BUTTON  de abrir o MENU ****************/}
+        {/* <Button size="icon" variant="outline">
           <MenuIcon/>
-        </Button> 
+        </Button>  */}
+        <SideBar/>
 
       </CardContent>
     </Card>
