@@ -108,7 +108,7 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
       </div>
   
     </div>
-  )
+  ) 
 }
 
 export default BarbershopDetailPage
