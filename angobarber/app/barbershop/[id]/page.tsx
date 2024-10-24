@@ -92,7 +92,7 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
           {barbershop.services.map((service) => (
             <ServiceItem
               service={service}
-              // barbershop={barbershop}
+              barbershop={barbershop}
               key={service.id}
             />
           ))}
