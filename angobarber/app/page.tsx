@@ -3,6 +3,7 @@ import Header from "./_components/header"
 import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
 import Banner from "./_components/banner"
+import Agendamento from "./_components/banner-agendamento"
 
 const Hpme = () => {
   return (
@@ -24,14 +25,17 @@ const Hpme = () => {
           </Button>
         </div>
 
-        {/********************** BANNER NA HOME PAHE ******************/}
+        {/********************** BANNER NA HOME PAGE ******************/}
         <div className="relative mt-6">
            <Banner/>
         </div>
-        
+
+        {/************** BANNER DE AGENDAMENTO *****************/}
+        <div className="mt-6">
+          <Agendamento/>
+        </div>
+
       </div>
-
-
     </div>
   )
 }
