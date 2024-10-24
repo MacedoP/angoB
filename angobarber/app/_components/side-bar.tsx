@@ -20,7 +20,7 @@ import { quickSearchOptions } from "../_service-icon-filter/search-icon";
 
 const SideBar = () => {
 
-  const {data} = useSession(); 
+  // const {data} = useSession(); 
 
   return (
     <Sheet>
@@ -101,9 +101,6 @@ const SideBar = () => {
                 </SheetClose>
             ))}
         </div>
-
-
-        <ButtonOut/>
 
       </SheetContent>
     </Sheet>
