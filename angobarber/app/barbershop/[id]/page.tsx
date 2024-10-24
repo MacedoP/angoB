@@ -7,8 +7,8 @@ import Image from "next/image"
 import { Button } from "@/app/_components/ui/button"
 import { ChevronLeftIcon, MapPin, StarIcon } from "lucide-react"
 import Link from "next/link"
-import BarberShopItem from "@/app/_components/barbershop-items"
 import Contactos from "@/app/_components/contatos-footer"
+import ServiceItem from "@/app/_components/service-item"
 
 interface BarberShopPageProps {
   params: {
@@ -84,20 +84,20 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
        {/*Div que contem os serviços e os preços do component barbershop-serive-item*/}
       {/**********************************************************/}
       
-      {/* <div className="space-y-4 border-b border-solid p-5">
+      <div className="space-y-4 border-b border-solid p-5">
         <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
           Serviços
         </h2>
         <div className="space-y-3">
           {barbershop.services.map((service) => (
-            <BarberShopItem
+            <ServiceItem
               service={service}
               barbershop={barbershop}
               key={service.id}
             />
           ))}
         </div>
-      </div> */}
+      </div>
       <div className="p-5">
         <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
           contactos
