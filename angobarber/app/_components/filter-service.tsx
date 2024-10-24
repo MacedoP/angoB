@@ -14,7 +14,7 @@ const Filter = () => {
           className="gap-2 text-white"
           asChild
         >
-          <Link href={`barbershops?services=${filter.title}`}>
+          <Link href={`/barbershop?service=${filter.title}`}>
             <Image
               src={filter.imageUrl}
               alt={filter.title}

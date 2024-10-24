@@ -105,7 +105,7 @@ const SideBar = () => {
                 className="text-md flex w-full justify-start gap-3 text-white"
                 asChild
               >
-                <Link href={`barbershops?services=${filter.title}`}>
+                <Link href={`/barbershop?service=${filter.title}`}>
                   <Image
                     src={filter.imageUrl}
                     alt={filter.title}
