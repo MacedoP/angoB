@@ -12,6 +12,7 @@ const Agendamento = () => {
         <Card>
 
             <CardContent className="flex justify-between p-0">
+              
             {/*Div a esquerda*/}
             <div className="flex flex-col gap-2 py-5 pl-4">
                 <Badge className="w-fit">Confirmado</Badge>
