@@ -19,6 +19,8 @@ import { createBooking } from "../_actions/create-booking"
 import { useSession } from "next-auth/react"
 import { toast } from "sonner"
 import { getBookings } from "../_actions/get-booking"
+import { Dialog, DialogContent } from "./ui/dialog"
+import SignInDialog from "./sign-in-dialog"
 
 interface ServiceItemProps {
   service: BarbershopService
@@ -76,6 +78,7 @@ const getTimeList = (bookings: Booking[]) => {
 const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   //********************************************************************************/
   const { data } = useSession()
+  const [signInDialogIsOpen, setSignInDialogIsOpen] = useState(false)
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined)
   const [selectedTime, setSelectedTime] = useState<string | undefined>(
     undefined,
@@ -95,7 +98,16 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
     }
     fetch()
   }, [selectedDay, service.id])
+  //******************************************************************************/
+  // Impede de fazer reserva se nao tiveres uma conta e se nao estiveres logado
+  const handleBookingClick = () => {
+    if (data?.user) {
+      return setBookingSheetIsOpen(true)
+    }
+    return setSignInDialogIsOpen(true)
+  }
 
+  //******************************************************************************/
   const handleBookingSheetOpenChange = () => {
     setSelectedDay(undefined)
     setSelectedTime(undefined)
@@ -170,11 +182,14 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                 open={bookingSheetIsOpen}
                 onOpenChange={handleBookingSheetOpenChange}
               >
-              
-                  <Button variant="secondary" size="sm" onClick={() => setBookingSheetIsOpen(true)}>
-                    Reversar
-                  </Button>
-                
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleBookingClick}
+                >
+                  Reversar
+                </Button>
+
                 <SheetContent className="px-0">
                   <SheetHeader>
                     <SheetTitle>Fazer Reserva</SheetTitle>
@@ -290,6 +305,17 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
           {/***************************************************************/}
         </CardContent>
       </Card>
+
+      {/***************************************************************/}
+      <Dialog
+        open={signInDialogIsOpen}
+        onOpenChange={(open) => setSignInDialogIsOpen(open)}
+        
+      >
+        <DialogContent className="w-[90% rounded-xl bg-secondary">
+          <SignInDialog />
+        </DialogContent>
+      </Dialog>
     </>
   )
 }
