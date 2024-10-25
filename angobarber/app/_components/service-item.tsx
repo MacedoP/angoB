@@ -53,20 +53,20 @@ const TIME_LIST = [
 
 const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   //********************************************************************************/
-  const {data} = useSession()
-  const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined)
-  const [selectedTime, setSelectedTime] = useState<string | undefined>(
-    undefined,
-  )
-
+    const {data} = useSession()
+    const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined)
+    const [selectedTime, setSelectedTime] = useState<string | undefined>(
+      undefined,
+    )
+ 
   //******************************************************************************/
-  const handleDateSelect = (date: Date | undefined) => {
-    setSelectedDay(date)
-  }
+    const handleDateSelect = (date: Date | undefined) => {
+      setSelectedDay(date)
+    }
   //******************************************************************************/
-  const handleTimeSelect = (time: string) => {
-    setSelectedTime(time) 
-  }
+    const handleTimeSelect = (time: string) => {
+      setSelectedTime(time) 
+    }
 
 
     /*******************************************************************/
@@ -84,7 +84,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
 
               await createBooking({
                 serviceId: service.id,
-                userId:'cm2nbsbei00009zw94r6zfu9b',
+                userId: (data?.user as any).id,
                 date: newDate,
               
               })
@@ -226,12 +226,13 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                     </div>
                   )}
                   {/*****************************BOTAO CONFIRMAR RESERVA*****************************/}
-                  <SheetFooter className="p-5">
+                  <SheetFooter className="px-5 mt-5">
                     <SheetClose asChild>
-                      <Button onClick={handleCreateBooking}>Cofirmar</Button>
+                      <Button onClick={handleCreateBooking} disabled={!selectedDay || !selectedTime}>Cofirmar</Button>
                     </SheetClose>
                   </SheetFooter>
                 </SheetContent>
+
               </Sheet>
             </div>
           </div>

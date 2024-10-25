@@ -13,15 +13,15 @@ const handler = NextAuth({
     }),
   ],
 
-//   callbacks: {
-//     async session({ session, user }) {
-//       session.user = {
-//         ...session.user,
-//         id: user.id,
-//       } as any
-//       return session
-//     },
-//   },
+  callbacks: {
+    async session({session, user }) {
+      session.user = {
+        ...session.user,
+        id: user.id
+      } as any 
+      return session
+    },
+  },
 
 })
 
