@@ -312,7 +312,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
         onOpenChange={(open) => setSignInDialogIsOpen(open)}
         
       >
-        <DialogContent className="w-[90% rounded-xl bg-secondary">
+        <DialogContent className="w-[90% rounded-xl">
           <SignInDialog />
         </DialogContent>
       </Dialog>

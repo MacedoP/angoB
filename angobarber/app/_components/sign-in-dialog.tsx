@@ -8,7 +8,7 @@ const SignInDialog = () => {
 
   return (
     < >
-      <DialogHeader className="rounded-[20px]">
+      <DialogHeader className="rounded-xl">
         <DialogTitle>Faça login na plataforma</DialogTitle>
         <DialogDescription>
           Conecte-se usando sua conta do Google.
