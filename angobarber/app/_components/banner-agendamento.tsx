@@ -13,7 +13,6 @@ import {
 } from "./ui/sheet"
 import Image from "next/image"
 import Contactos from "./contatos-footer"
-import { Phone } from "lucide-react"
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
