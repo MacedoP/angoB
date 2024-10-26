@@ -9,6 +9,7 @@ import { ChevronLeftIcon, MapPin, StarIcon } from "lucide-react"
 import Link from "next/link"
 import Contactos from "@/app/_components/contatos-footer"
 import ServiceItem from "@/app/_components/service-item"
+import MenuArrowBack from "@/app/_components/button-back-home"
 
 interface BarberShopPageProps {
   params: {
@@ -46,16 +47,7 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
                 {/*Componente que contem os icone para voltar a home pahe e o icon menu*/}
                 {/**********************************************************/}
                 <div>
-                <Button
-                    className="absolute left-4 top-4"
-                    size="icon"
-                    variant="secondary"
-                    asChild
-                >
-                    <Link href="/">
-                    <ChevronLeftIcon />
-                    </Link>
-                </Button>
+                <MenuArrowBack/>
                 </div>
             </div>
               {/*Div que contem o nome da barbearia o endereço*/}
