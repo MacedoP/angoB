@@ -7,6 +7,8 @@ import Search from "./_components/search"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
 import { db } from "./_lib/prisma"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -43,8 +45,8 @@ const Home = async () => {
 
       {/******************** Message Abaixo do Header *****************/}
       <div className="p-5">
-        <h1 className="text-xl font-bold">Ola , Macedo</h1>
-        <p className="mt-1">Segunda-feira, 08 de agosto</p>
+        <h1 className="text-xl font-bold">Ola, {session?.user ? session.user.name : "Bem vindo "}</h1>
+        <p className="mt-1 capitalize">{format(new  Date(), "EEEE,dd 'de' MMMM 'de' yyyy",{locale: ptBR})}</p>
 
         {/******************* Input De Pesquisa ********************/}
         <div className="mt-4">
