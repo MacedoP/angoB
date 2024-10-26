@@ -4,17 +4,13 @@
 import { db } from "@/app/_lib/prisma"
 import { notFound } from "next/navigation"
 import Image from "next/image"
-import { Button } from "@/app/_components/ui/button"
-import { ChevronLeftIcon, MapPin, StarIcon } from "lucide-react"
-import Link from "next/link"
+import { MapPin, StarIcon } from "lucide-react"
 import Contactos from "@/app/_components/contatos-footer"
 import ServiceItem from "@/app/_components/service-item"
 import MenuArrowBack from "@/app/_components/button-back-home"
 
 interface BarberShopPageProps {
-  params: {
-    id: string
-  }
+  params:Promise<{ id: string }>
 }
 
 const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
@@ -22,7 +18,7 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
     
   const barbershop = await db.barbershop.findUnique({
     where: {
-      id: params.id,
+      id: (await params).id,
     },
     include: {
       services: true,
