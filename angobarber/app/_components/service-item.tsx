@@ -199,13 +199,14 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                   </SheetHeader>
 
                   {/**************************** CALENDARIO ***********************************/}
-                  <div className="border-b border-solid py-5">
+                  <div className="border-b border-solid py-5 md:py-8 lg:py-10">
                     <Calendar
                       mode="single"
                       locale={ptBR}
                       selected={selectedDay}
                       fromDate={new Date()}
                       onSelect={handleDateSelect}
+                      className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg m-auto"
                       // fromDate={new Date()}
                       styles={{
                         head_cell: {
