@@ -1,8 +1,6 @@
 import { Card, CardContent } from "./ui/card"
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { MenuIcon } from "lucide-react";
 import SideBar from "./side-bar";
 
 const Header = () => {
@@ -21,9 +19,6 @@ const Header = () => {
         </div>
 
         {/***************** BUTTON  de abrir o MENU ****************/}
-        {/* <Button size="icon" variant="outline">
-          <MenuIcon/>
-        </Button>  */}
         <SideBar/>
 
       </CardContent>
