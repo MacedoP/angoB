@@ -14,21 +14,11 @@ import {
 import Image from "next/image"
 import { quickSearchOptions } from "../_service-icon-filter/search-icon"
 import ButtonOut from "./button-logout"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "./ui/dialog"
-import {
-  Calendar1Icon,
-  HomeIcon,
-  LogInIcon,
-  MenuIcon,
-} from "lucide-react"
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import { Calendar1Icon, HomeIcon, LogInIcon, MenuIcon } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import SignInDialog from "./sign-in-dialog"
-
 
 const SideBar = () => {
   const { data } = useSession()
@@ -47,33 +37,33 @@ const SideBar = () => {
 
         {/**************************** FAZER LOGIN COM GOOGLE ********************************/}
         <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
-        {data?.user ? (
-          <div className="flex items-center gap-2">
-            <Avatar>
-              <AvatarImage src={data?.user?.image ?? ""} />
-            </Avatar>
+          {data?.user ? (
+            <div className="flex items-center gap-2">
+              <Avatar>
+                <AvatarImage src={data?.user?.image ?? ""} />
+              </Avatar>
 
-            <div>
-              <p className="font-bold">{data.user.name}</p>
-              <p className="text-xs">{data.user.email}</p>
+              <div>
+                <p className="font-bold">{data.user.name}</p>
+                <p className="text-xs">{data.user.email}</p>
+              </div>
             </div>
-          </div>
-        ) : (
-          <>
-            <h2 className="font-bold">Olá, faça seu login!</h2>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button size="icon">
-                  <LogInIcon />
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="w-[90%] rounded-xl">
-                <SignInDialog />
-              </DialogContent>
-            </Dialog>
-          </>
-        )}
-      </div>
+          ) : (
+            <>
+              <h2 className="font-bold">Olá, faça seu login!</h2>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="icon">
+                    <LogInIcon />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="w-[90%] rounded-xl">
+                  <SignInDialog />
+                </DialogContent>
+              </Dialog>
+            </>
+          )}
+        </div>
 
         {/**************************** SIDE BAR TEXTO INICIO********************************/}
         <div className="flex flex-col gap-2 border-b border-solid py-5">
@@ -89,9 +79,13 @@ const SideBar = () => {
           <Button
             className="flex items-center justify-start gap-2"
             variant="ghost"
-          >
-            <Calendar1Icon />
-            Agendamento
+            asChild>
+              
+            <Link href="/bookings">
+              <Calendar1Icon />
+              Agendamento
+            </Link>
+
           </Button>
         </div>
 

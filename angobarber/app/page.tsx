@@ -1,20 +1,40 @@
 import Header from "./_components/header"
 import Banner from "./_components/banner"
 import Agendamento from "./_components/banner-agendamento"
-import { db } from "./_lib/prisma"
 import BarberShopItem from "./_components/barbershop-items"
 import Filter from "./_components/filter-service"
 import Search from "./_components/search"
+import { getServerSession } from "next-auth"
+import { authOptions } from "./_lib/auth"
+import { db } from "./_lib/prisma"
 
 const Home = async () => {
-  
+  const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
   const popularesBarbershop = await db.barbershop.findMany({
     orderBy: {
       name: "desc",
     },
   })
-  
+
+  const actualbookings = session?.user ? await db.booking.findMany({
+    where: {
+      userId: (session?.user as any).id,
+      date:{
+        gte: new Date(),
+      }
+    },
+    include:{
+      service: {
+        include: {
+          barbershop: true
+        },
+      },
+    },
+    orderBy:{
+      date: 'asc',
+    }
+  }) : []
 
   return (
     <div>
@@ -26,40 +46,39 @@ const Home = async () => {
         <h1 className="text-xl font-bold">Ola , Macedo</h1>
         <p className="mt-1">Segunda-feira, 08 de agosto</p>
 
-
         {/******************* Input De Pesquisa ********************/}
-       <div className="mt-4">
-          <Search/>
-       </div>
-
-        <div className="mt-6">
-          <Filter/>
+        <div className="mt-4">
+          <Search />
         </div>
 
+        <div className="mt-6">
+          <Filter />
+        </div>
 
         {/********************** BANNER NA HOME PAGE ******************/}
         <div className="relative mt-6">
-           <Banner/>
+          <Banner />
         </div>
-
 
         {/************** BANNER DE AGENDAMENTO *****************/}
-        <div className="mt-6">
-          <Agendamento/>
+        <h2 className="mb-2 mt-6 text-sx font-bold uppercase text-gray-400">Agendamentos</h2>
+        <div className="mt-6 flex overflow-x-auto gap-3 [&:: -webkit-scrollbar]:hidden">
+          {actualbookings.map((booking) => (
+              <Agendamento key={booking.id} booking={booking}/>
+          ))}
         </div>
 
-
-         {/*Abaixo estamos a rodar os nosso bancos  e mostrar as nossas imagens*/}
-         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+        {/*Abaixo estamos a rodar os nosso bancos  e mostrar as nossas imagens*/}
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
-       <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
+        <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
           {barbershops.map((barbershop) => (
             <BarberShopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
 
-         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Populares
         </h2>
         <div className="[&:: -webkit-scrollbar]:hidden flex gap-4 overflow-auto">
@@ -67,7 +86,7 @@ const Home = async () => {
             <BarberShopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
-
+        
       </div>
     </div>
   )
