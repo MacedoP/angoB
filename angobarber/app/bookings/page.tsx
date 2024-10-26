@@ -6,7 +6,6 @@ import { authOptions } from "../_lib/auth"
 import { db } from "../_lib/prisma";
 import { notFound } from "next/navigation";
 import Agendamento from "../_components/banner-agendamento";
-import { date } from "zod";
 
 const Bookings = async () => {
     const session =  await getServerSession(authOptions);
