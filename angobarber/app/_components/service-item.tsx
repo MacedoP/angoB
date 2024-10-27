@@ -129,7 +129,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
     setSelectedTime(time)
   }
 
-  /*******************************************************************/
+  /****************************Bottun que nos permite criar agendamentos ***************************************/
   const handleCreateBooking = async () => {
     console.log({ service })
     try {
