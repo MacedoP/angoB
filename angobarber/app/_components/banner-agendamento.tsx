@@ -68,10 +68,10 @@ const Agendamento = ({ booking }: BookingItemProps) => {
   }
 
   return (
-    <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
+    <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange} >
       <SheetTrigger className="w-full" asChild>
-        <Card className="min-w-[90%] gap-3">
-          <CardContent className="flex justify-between p-0">
+        <Card className="min-w-[90%] gap-3 overflow-y-auto">
+          <CardContent className="flex justify-between p-0 overflow-y-auto">
             
             {/*Div a esquerda*/}
             <div className="flex flex-col gap-2 py-5 pl-4">
@@ -109,7 +109,7 @@ const Agendamento = ({ booking }: BookingItemProps) => {
         </Card>
       </SheetTrigger>
 
-      <SheetContent className=" border-b border-solid">
+      <SheetContent className=" border-b border-solid overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
             <SheetTitle className="border-b border-solid text-left">
@@ -118,7 +118,7 @@ const Agendamento = ({ booking }: BookingItemProps) => {
           </SheetTitle>
         </SheetHeader>
 
-        <div className="relative m-auto mt-6 flex h-[200px] w-full items-end">
+        <div className="relative m-auto mt-6 flex h-[180px] w-full items-end">
           <Image
             src="/map.jpg"
             fill
@@ -197,7 +197,7 @@ const Agendamento = ({ booking }: BookingItemProps) => {
         </div>
 
         {/****************** button para voltar  *******************/}
-        <SheetFooter className="mt-[70px]">
+        <SheetFooter className="mt-[50px]">
           <div className="flex items-center justify-between gap-3 px-2">
             <SheetClose asChild>
               <Button variant="outline" className="w-full">

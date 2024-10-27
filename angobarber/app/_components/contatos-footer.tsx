@@ -16,7 +16,7 @@ const Contactos = ({ phones }: NumberContactProps) => {
     <div className="flex items-center justify-between p-3">
       <div className="flex gap-2">
         <Smartphone />
-        <p>{phones}</p>
+        <p className="text-xs">{phones}</p>
       </div>
 
       {/*Button para copiar os contantos*/}
