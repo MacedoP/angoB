@@ -30,6 +30,7 @@ import {
 import { deleteBooking } from "../_actions/delete-bookings"
 import { toast } from "sonner"
 import { useState } from "react"
+import BokkingSummary from "./booking-summary"
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
@@ -140,6 +141,7 @@ const Agendamento = ({ booking }: BookingItemProps) => {
           </Card>
         </div>
 
+
         <div className="mt-6">
           <Badge
             className="w-fit"
@@ -148,46 +150,11 @@ const Agendamento = ({ booking }: BookingItemProps) => {
             {isConfirmed ? "Confirmado" : "Finalizado"}
           </Badge>
 
-          <Card className="mb-2 mt-3">
-            <CardContent className="space-y-3 p-3">
-              <div className="flex items-center justify-between">
-                <h2 className="font-bold">{booking.service.name}</h2>
-                <p className="text-sm font-bold">
-                  {Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "AOA",
-                  }).format(Number(booking.service.price))}
-                </p>
-              </div>
+      {/*****************************Resumo do agendamento *********************************/}
+      <div className="mt-2 mb-2">
 
-              {/************************** Data e o dia da Reserva ********************************/}
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm text-gray-400">Data</h2>
-                <p className="text-sm">
-                  {format(booking.date, "d 'de' MMMM", {
-                    locale: ptBR,
-                  })}
-                </p>
-              </div>
-
-              {/************************** HORAROIO DA RESERVA ********************************/}
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm text-gray-400">Horario</h2>
-                <p className="text-sm">
-                  {" "}
-                  {format(booking.date, "HH:mm", {
-                    locale: ptBR,
-                  })}
-                </p>
-              </div>
-
-              {/************************** NOME DA BARBEARIA ONDE FOI FEITO A RESERVA ********************************/}
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm text-gray-400">Barbearia</h2>
-                <p className="text-sm">{booking.service.name}</p>
-              </div>
-            </CardContent>
-          </Card>
+         <BokkingSummary barbershop={barbershop} service={booking.service} selectedDate={booking.date}/>
+      </div>
 
           <div>
             {barbershop.phones.map((phone) => (
