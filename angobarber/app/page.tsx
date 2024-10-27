@@ -21,6 +21,7 @@ const Home = async () => {
 
   const actualbookings = session?.user ? await db.booking.findMany({
     where: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       userId: (session?.user as any).id,
       date:{
         gte: new Date(),
