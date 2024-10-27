@@ -46,7 +46,7 @@ const Home = async () => {
 
       {/******************** Message Abaixo do Header *****************/}
       <div className="p-5">
-        <h1 className="text-xl font-bold">Ola, {session?.user ? session.user.name : "Bem vindo "}</h1>
+        <h1 className="text-xl font-bold">Ola, {session?.user ? session.user.name : " Bem vindo "}</h1>
         <p className="mt-1 capitalize">{format(new  Date(), "EEEE,dd 'de' MMMM 'de' yyyy",{locale: ptBR})}</p>
 
         {/******************* Input De Pesquisa ********************/}
@@ -64,7 +64,9 @@ const Home = async () => {
         </div>
 
         {/************** BANNER DE AGENDAMENTO *****************/}
+        
         <h2 className="mb-2 mt-6 text-sx font-bold uppercase text-gray-400">Agendamentos</h2>
+
         <div className="mt-6 flex overflow-x-auto gap-3 [&:: -webkit-scrollbar]:hidden">
           {actualbookings.map((booking) => (
               <Agendamento key={booking.id} booking={booking}/>

@@ -72,7 +72,7 @@ const Bookings = async () => {
               Confirmados
             </h2>
             {confirmedbookings.map((booking) => (
-              <Agendamento key={booking.id} booking={booking} />
+              <Agendamento key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
             ))}
           </>
         )}
@@ -84,7 +84,7 @@ const Bookings = async () => {
               Finalizados
             </h2>
             {concludebookings.map((booking) => (
-              <Agendamento key={booking.id} booking={booking} />
+              <Agendamento key={booking.id} booking={JSON.parse(JSON.stringify(booking))} />
             ))}
           </>
         )}

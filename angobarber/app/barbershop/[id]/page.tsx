@@ -62,7 +62,7 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
                 </div>
             </div>
 
-             {/*Descricao das barbearias*/}
+      {/*Descricao das barbearias*/}
       {/**********************************************************/}
       <div className="border-d space-y-4 border-solid p-5">
         <h2 className="text-xs font-bold uppercase text-gray-400">Sobre nós</h2>
@@ -79,8 +79,8 @@ const BarbershopDetailPage =async ({params}: BarberShopPageProps) => {
         <div className="space-y-3">
           {barbershop.services.map((service) => (
             <ServiceItem
-              service={service}
-              barbershop={barbershop}
+              service={JSON.parse(JSON.stringify(service))}
+              barbershop={JSON.parse(JSON.stringify(barbershop))}
               key={service.id}
             />
           ))}
