@@ -1,0 +1,44 @@
+## SEGUNDA PAGINA DA NOSSA APLICACAO
+
+# A pagina presente nesta pasta , vai exibir as descricoes das nossas barbearias assim como sua localizacao, e os servico que a mesma barbearia oferece, lembrando que esta barbearia é escolhida na nossa pagina home, 
+
+const BarbershopDetailPage = (params) => {
+    return ( 
+        <div>
+            <h1>{params.id}</h1>
+
+
+        </div>
+     );
+}
+
+# O params.id => o id é o nome da pasta que esta dentro da nossa pasta barbershop-page-details, nao considera como um id vindo do nosso banco de dados
+
+
+# O codigo abaixo esta dizer o seguinte acesse a tabela do no meu banco de dandos neste caso tabela com o nome barbershop, e retorna um id unico , esse ai id vai ser retornado qunado eu clicar em uma barbearia na minha home page
+
+const barbershop = await db.barbershop.findUnique({
+    where:{
+        id: params.id
+    }
+})
+
+#O codigo abaixo faz o seguinte ao pesquisarmos um id no nosso banco de dados, caso esse id nao existe ele vai retornar o error 404
+  if(!barbershop){
+        return notFound
+    }
+
+
+# Acessando o meu banco dados na tabela barbershop
+## Explicacoes
+
+ const barbershops = await db.barbershop.findMany({
+        where:{
+            name:{
+            //procura o nome que foi digitado no nosso input
+                contains: searchParams?.search,
+
+                mode: "insensitive",// isso quer digitando letras maiusculas ou minusculas , sera aceite
+            }
+        }
+    })

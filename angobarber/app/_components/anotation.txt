@@ -1,0 +1,47 @@
+# Componente barbershop-service-item, vai exibir as nossas barbearias com os serviços disponiveis e os seus respectivos preços, os conteudo desta pagina sera exibido na nossa segunda pagina, que esta dentro da pasta barbershops.
+
+# O BarbershopService é uma tabela no nosso banco de dados , e nao um componente
+interface ServiceItemProps{
+    service: BarbershopService
+}
+
+# O codigo abaixo faz o seguint, ele faz uma conversao de valores, pegando a moeda do pais o qual esta sendo usado o aplicativo [AOA] quer dizer kwanza que é a moeda usado em Angola
+
+ <p className="text-primary font-bold">
+ {Intl.NumberFormat("pt-BR",{
+        style: "currency",
+        currency: 'AOA'
+        }).format(Number(service.price))}</p>
+
+
+# O codigo abaixo retira do staoverflow nos permite a accao de copiar os nossos contantos no nosso footer contacto
+https://stackoverflow.com/questions/39501289/in-reactjs-how-to-copy-text-to-clipboard
+
+## Possivel origem do erro para o agendamento
+const handleCreateBooking = async () => {
+          console.log({service});
+           try{
+                if(!selectDay || !selectTime) return
+        
+                  const hour = Number(selectTime.split(":")[0])
+                  const minute = Number(selectTime.split(":")[1])
+                  const newDate = set(selectDay, {
+                      minutes: minute,
+                      hours: hour,
+                  })
+
+                  await createBooking({
+                    serviceId: service.id,
+                    userId: (data?.user as any).id,
+                    date: newDate,
+                  
+                  })
+
+                  toast.success("Reserva criada com sucesso!")
+                  handleSheetOpenChange()
+                  
+              }catch(error){
+                  console.error(error)
+                  toast.error("Erro ao criar reserva!")
+            };
+          }

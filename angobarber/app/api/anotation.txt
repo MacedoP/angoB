@@ -1,0 +1,4 @@
+## Explicacao do funcionamento para podermos nos conectar com o google
+* primeiro precisamos configurar o NextAuth para que ele seja usado junto com o prisma, em outras palavras, para podermos nos conectar com o nosso banco de dados.
+
+* segundo precisamos fazer as configuracoes necessarias no google, caso estivesses a usar o instam ou o facebook, terias de fazer o mesmo, para mais explicacoes a respeito abra o meu ficheiro README.md poderas encontrar um link que te leva a biblioteca, onde poderas aprender mais a respeito lendo a domunentacao e seguir os passos.
