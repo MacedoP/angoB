@@ -195,30 +195,33 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                 </Button>
 
                 <SheetContent className="px-0">
-                  <SheetHeader>
+                  <SheetHeader className="md:text-center">
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
                   {/**************************** CALENDARIO ***********************************/}
-                  <div className="border-b border-solid py-5 md:py-8 lg:py-10">
+                  <div className="border-b border-solid py-5 md:py-8 lg:py-10 flex justify-center">
                     <Calendar
                       mode="single"
                       locale={ptBR}
                       selected={selectedDay}
                       fromDate={new Date()}
                       onSelect={handleDateSelect}
-                      className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg m-auto"
-                      // fromDate={new Date()}
+                      className="text-sm md:text-base lg:text-lg "
                       styles={{
                         head_cell: {
-                          width: "100%",
                           textTransform: "capitalize",
                         },
                         cell: {
                           width: "100%",
+                          maxWidth: "40px",
+                          height: "auto",
+                          
                         },
                         button: {
                           width: "100%",
+                          maxWidth: "40px",
+                          height: "auto",
                         },
                         nav_button_previous: {
                           width: "32px",
@@ -230,6 +233,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                         },
                         caption: {
                           textTransform: "capitalize",
+                          textAlign: "center",
                         },
                       }}
                     />
@@ -266,11 +270,12 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                     </div>
                   )}
                   {/*****************************BOTAO CONFIRMAR RESERVA*****************************/}
-                  <SheetFooter className="mt-5 px-5">
+                  <SheetFooter className="mt-5 px-5 md:w-full lg:w-[100%]">
                     <SheetClose asChild>
                       <Button
                         onClick={handleCreateBooking}
                         disabled={!selectedDay || !selectedTime}
+                        className="md:w-full"
                       >
                         Cofirmar
                       </Button>
