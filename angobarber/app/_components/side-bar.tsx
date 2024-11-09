@@ -80,11 +80,17 @@ const SideBar = () => {
             className="flex items-center justify-start gap-2"
             variant="ghost"
             asChild>
-              
-            <Link href="/bookings">
-              <Calendar1Icon />
-              Agendamento
-            </Link>
+              {data?.user? (
+                <Link href="/bookings">
+                  <Calendar1Icon />
+                  Agendamento
+                </Link>
+              ) :(
+                <Link href="/">
+                    <Calendar1Icon />
+                    Agendamento
+                </Link>
+              )}
 
           </Button>
         </div>
