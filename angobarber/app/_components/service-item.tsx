@@ -92,6 +92,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   //*********************************DIAS JA SELECIONADOS*****************************************
   const [dayBookings, setDayBookings] = useState<Booking[]>([])
   const [bookingSheetIsOpen, setBookingSheetIsOpen] = useState(false)
+
   useEffect(() => {
     const fetch = async () => {
       if (!selectedDay) return

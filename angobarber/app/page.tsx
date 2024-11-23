@@ -10,6 +10,10 @@ import { db } from "./_lib/prisma"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 
+export const metada={
+  title:"Barbearia",
+}
+
 const Home = async () => {
   const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
