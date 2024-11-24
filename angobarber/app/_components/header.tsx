@@ -7,7 +7,6 @@ const Header = () => {
   return (
     <Card>
       <CardContent className="flex flex-row items-center justify-between p-5">
-       
        {/************************ LOGO *************************/} 
         <div className="logo_container flex">
           <Image src="/scissor.svg"  alt="Scisssor picture"  width={18} height={18}/>
@@ -17,7 +16,6 @@ const Header = () => {
             </Link>
           </h1>
         </div>
-
         {/***************** BUTTON  de abrir o MENU ****************/}
         <SideBar/>
 
@@ -25,5 +23,4 @@ const Header = () => {
     </Card>
   )
 }
-
 export default Header

@@ -80,6 +80,7 @@ const SideBar = () => {
             className="flex items-center justify-start gap-2"
             variant="ghost"
             asChild>
+              {/*************** Se o usuario estiver logado mostrata os agentamentos **********/}
               {data?.user? (
                 <Link href="/bookings">
                   <Calendar1Icon />
@@ -118,7 +119,6 @@ const SideBar = () => {
             </SheetClose>
           ))}
         </div>
-
         <ButtonOut />
       </SheetContent>
     </Sheet>

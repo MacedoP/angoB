@@ -10,10 +10,6 @@ export const metada={
 
 interface BarbershopsPageProps {
   searchParams: Promise<{ title?: string; service?: string }>;
-    // searchParams: {
-    //   title?: string
-    //   service?: string
-    // }
   }
 
 const BarbershopsPage = async ({ searchParams }: BarbershopsPageProps) => {
