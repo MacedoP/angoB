@@ -81,6 +81,7 @@ const getTimeList = ({ bookings, selectedDay }: GetTimeListProps) => {
 //********************************************************************************/
 
 const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
+  
   //********************************************************************************/
   const { data } = useSession()
   const [signInDialogIsOpen, setSignInDialogIsOpen] = useState(false)

@@ -23,7 +23,7 @@ const MenuArrowBack = () => {
         className="absolute right-4 top-4"
         size="icon"
         variant="secondary"
-        asChild 
+
       >
         <SideBar />
       </Button>
