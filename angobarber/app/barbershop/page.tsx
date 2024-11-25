@@ -4,9 +4,7 @@ import Search from "../_components/search"
 import { db } from "../_lib/prisma"
 
 
-export const metada={
-  title:"Barber Shop",
-}
+
 
 interface BarbershopsPageProps {
   searchParams: Promise<{ title?: string; service?: string }>;
