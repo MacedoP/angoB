@@ -7,11 +7,14 @@ import { Badge } from "./ui/badge"
 import { StarIcon} from "lucide-react"
 import Link from "next/link"
 
+
 interface BarberShopItemProps {
   barbershop: Barbershop
 }
 
 const BarberShopItem = ({ barbershop }: BarberShopItemProps) => {
+  
+
   return (
     <Card className="min-w-[167px] ">{/*Para deixar responsivo teremos que remover esta medida fixa*/}
       <CardContent className="p-0 px-1 pt-1 ">
@@ -38,7 +41,7 @@ const BarberShopItem = ({ barbershop }: BarberShopItemProps) => {
           <h3 className="truncate font-semibold mt-2 mb-2">{barbershop.name}</h3>
           <p className="text-sm text-gray-400 truncate mt-2 mb-2">{barbershop.address}</p>
 
-          <Button variant="secondary" className="w-full" asChild>
+          <Button variant="default" className="w-full" asChild>
             <Link href={`/barbershop/${barbershop.id}`} >Reservar</Link>
           </Button>
 
@@ -50,3 +53,5 @@ const BarberShopItem = ({ barbershop }: BarberShopItemProps) => {
 }
 
 export default BarberShopItem
+
+

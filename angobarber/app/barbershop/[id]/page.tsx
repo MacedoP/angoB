@@ -83,8 +83,8 @@ const BarbershopDetailPage = async ({ params }: BarberShopPageProps) => {
           ))}
         </div>
       </div>
-      
-      {/************************* FOOTER NUMBER PHONE *****************/}
+
+      {/************************* FOOTER NUMBER Contact PHONE *****************/}
       <div className="p-5">
         <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
           contactos
