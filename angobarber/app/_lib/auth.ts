@@ -12,6 +12,7 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
+  //* Funcao que so sera chamada se tiver sucesso na autenticacao, ou seja, se o usuario for autenticado, e esteja logado
   callbacks: {
     async session({ session, user }) {
       session.user = {

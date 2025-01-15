@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 
 /*Este codigo garante que apenas uma instacia do prisma client vai ser instanciada no seu servidor do next*/
+//* Arquivo que cria a conexao com o nosso banco de dados
 
 declare global {
   // eslint-disable-next-line no-unused-vars, no-var

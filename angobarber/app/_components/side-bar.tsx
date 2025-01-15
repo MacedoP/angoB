@@ -92,7 +92,6 @@ const SideBar = () => {
                     Agendamento
                 </Link>
               )}
-
           </Button>
         </div>
 
