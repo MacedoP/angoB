@@ -112,11 +112,9 @@ const Agendamento = ({ booking }: BookingItemProps) => {
 
       <SheetContent className=" border-b border-solid overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>
             <SheetTitle className="border-b border-solid text-left">
               Informacoes da Reserva
             </SheetTitle>
-          </SheetTitle>
         </SheetHeader>
 
         <div className="relative m-auto mt-6 flex h-[180px] w-full items-end">
@@ -157,8 +155,8 @@ const Agendamento = ({ booking }: BookingItemProps) => {
       </div>
 
           <div>
-            {barbershop.phones.map((phone) => (
-              <Contactos key={phone} phones={phone} />
+            {barbershop.phones.map((phone,index) => (
+              <Contactos key={index} phones={phone} />
             ))}
           </div>
         </div>
